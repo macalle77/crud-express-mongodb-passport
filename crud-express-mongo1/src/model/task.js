@@ -1,3 +1,4 @@
+/*
 module.exports = function () {
 
   var db = require('./../libs/db-connection')();
@@ -13,3 +14,12 @@ module.exports = function () {
   return db.model('tasks',Task);
 
 }
+*/
+
+var mongoose = require('mongoose');
+
+module.exports = mongoose.model('tasks',{
+  title: String,
+  description: String,
+  status: Boolean
+});

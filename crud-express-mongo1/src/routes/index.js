@@ -1,8 +1,8 @@
 var express = require('express');
 
-var model = require ('../model/task')();
+var model = require ('../model/task');
 
-var access = require ('../model/users')();
+var access = require ('../model/users');
 
 var router=express.Router();
 
@@ -38,7 +38,7 @@ module.exports = function(passport){
 
       /* Handle Login POST */
     router.post('/login', passport.authenticate('login', {
-      successRedirect: '/error1',
+      successRedirect: '/home',
       failureRedirect: '/',
       failureFlash : true
     }));
@@ -50,7 +50,7 @@ module.exports = function(passport){
 
     /* Handle Registration POST */
     router.post('/signup', passport.authenticate('signup', {
-      successRedirect: '/error1',
+      successRedirect: '/home',
       failureRedirect: '/signup',
       failureFlash : true
     }));

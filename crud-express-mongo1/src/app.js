@@ -4,9 +4,16 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var cookieParser = require('cookie-parser');
 
-var app = express();
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+
+var dbConfig=require('./libs/db');
+var mongoose=require('mongoose');
+
+var app = express();
+
+//connect to DB
+mongoose.connect(dbConfig.url);
 
 //var router = express.Router();
 
@@ -19,8 +26,8 @@ var bodyParser = require('body-parser');
 
 //view engine setup
 app.set('views', path.join(__dirname, 'views'));
-//app.set('view engine', 'ejs');
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
+//app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
